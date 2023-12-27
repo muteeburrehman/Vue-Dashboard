@@ -1,8 +1,9 @@
 <template>
+
   <div id="page-content-wrapper">
     <nav class="navbar navbar-expand-lg navbar-light bg-transparent py-4 px-4">
       <div class="d-flex align-items-center">
-        <i class="fas fa-align-left primary-text fs-4 me-3" id="menu-toggle"></i>
+<!--        <i @click="toggleSidebar" class="fas fa-align-left primary-text fs-4 me-3" id="menu-toggle"></i>-->
         <h2 class="fs-2 m-0">Dashboard</h2>
       </div>
 
@@ -17,7 +18,7 @@
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle second-text fw-bold" href="#" id="navbarDropdown"
                role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              <i class="fas fa-user me-2"></i>John Doe
+              <i class="fas fa-user me-2"></i>Muteeb Ur Rehman
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
               <li><a class="dropdown-item" href="#">Profile</a></li>
@@ -29,10 +30,10 @@
       </div>
     </nav>
 
-    <div class="container-fluid px-4">
+    <div class="container-fluid px-4 ">
       <div class="row g-3 my-2">
         <div class="col-md-3">
-          <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
+          <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded hover-functionality">
             <div>
               <h3 class="fs-2">720</h3>
               <p class="fs-5">Products</p>
@@ -42,7 +43,7 @@
         </div>
 
         <div class="col-md-3">
-          <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
+          <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded hover-functionality">
             <div>
               <h3 class="fs-2">4920</h3>
               <p class="fs-5">Sales</p>
@@ -53,7 +54,7 @@
         </div>
 
         <div class="col-md-3">
-          <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
+          <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded hover-functionality">
             <div>
               <h3 class="fs-2">3899</h3>
               <p class="fs-5">Delivery</p>
@@ -63,7 +64,7 @@
         </div>
 
         <div class="col-md-3">
-          <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
+          <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded hover-functionality">
             <div>
               <h3 class="fs-2">%25</h3>
               <p class="fs-5">Increase</p>
@@ -164,20 +165,15 @@
       </div>
 
     </div>
+
   </div>
-
-  <!-- /#page-content-wrapper -->
-
-
 </template>
 
 <script>
-import { ref } from 'vue';
-
+import {ref} from "vue";
 export default {
   setup() {
     const isToggled = ref(false);
-
     const toggleSidebar = () => {
       isToggled.value = !isToggled.value;
     };
@@ -190,6 +186,47 @@ export default {
 };
 </script>
 
+
 <style scoped>
-/* Add any component-specific styles here */
+.hover-functionality {
+  display: block;
+  top: 0px;
+  position: relative;
+  max-width: 262px;
+  background-color: #f2f8f9;
+  border-radius: 4px;
+  padding: 32px 24px;
+  margin: 12px;
+  text-decoration: none;
+  z-index: 0;
+  overflow: hidden;
+  border: 1px solid #f2f8f9;
+
+  &:hover {
+    transition: all 0.2s ease-out;
+    box-shadow: 0px 4px 8px rgba(38, 38, 38, 0.2);
+    top: -4px;
+    border: 1px solid #cccccc;
+    background-color: white;
+  }
+
+  &:before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: -16px;
+    right: -16px;
+    background: #00838d;
+    height: 32px;
+    width: 32px;
+    border-radius: 32px;
+    transform: scale(2);
+    transform-origin: 50% 50%;
+    transition: transform 0.15s ease-out;
+  }
+
+  &:hover:before {
+    transform: scale(2.15);
+  }
+}
 </style>
